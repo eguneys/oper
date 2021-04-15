@@ -1380,6 +1380,11 @@ package-json@^6.3.0:
     registry-url "^5.0.0"
     semver "^6.2.0"
 
+pampu@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/pampu/-/pampu-1.0.0.tgz#7ac29c998adc6ac3b79d1ae4ad032d517c55cd57"
+  integrity sha512-dxCh9oXBuce1Oj2OEnX/34CjCXXFCEHf9NCahHzWelPG68XoqwsLZuj/nmyOZbG4jXAIuc/rFl8EK4Nxvaz6/A==
+
 parse-json@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/parse-json/-/parse-json-4.0.0.tgz#be35f5425be1f7f6c747184f98a788cb99477ee0"
