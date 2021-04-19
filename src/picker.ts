@@ -1,12 +1,11 @@
 import { tot } from 'tobil';
 import { erm, q } from 'esrar';
-import { nt } from 'nefs';
 
 export default class MovePicker {
 
   pgns: Array<erm.QPGN>
   lastPick?: erm.QPGN
-  outOfBook = false
+  lastMove?: erm.QMove
   
   constructor() {
     this.pgns = [];
@@ -17,8 +16,8 @@ export default class MovePicker {
   }
 
   abort() {
+    this.lastMove = undefined;
     this.lastPick = undefined;
-    this.outOfBook = false;
   }
 
   setPgns(pgns: Array<erm.QPGN>) {
@@ -29,7 +28,7 @@ export default class MovePicker {
     return moves[0]
   }
 
-  pick(fen: nt.Fen) {
+  pick(fen: string) {
     let chats = [],
     move;
 
@@ -48,24 +47,29 @@ export default class MovePicker {
         let qmove = this.pickFromQMoves(qmoves);
         if (qmove) {
           move = q.qUci(qmove);
+          this.lastMove = qmove;
         }
       }
-    }
 
-    if (move) {
-      let res: Array<tot.PlayStateAction> = [move];
-      res = res.concat(chats.map(chat => ({ chat })));
-      return res;
-    } else {
-      if (!this.outOfBook) {
-        this.outOfBook = true;
+      if (move) {
+        let res: Array<tot.PlayStateAction> = [move];
+        res = res.concat(chats.map(chat => ({ chat })));
+        return res;
+      } else {
+        if (this.lastMove) {
+          let score = q.qScore(this.lastPick, this.lastMove);
+          
+          this.lastMove = undefined;
 
-        let chat = `Out of book now.`;
-        
-        return [{
-          chat
-        }];
+          let chat = `Out of book now. Score: ${score.ply}/${score.maxPly}`;
+          
+          return [{
+            chat
+          }];
+        }
       }
+    } else {
+      return [];
     }
   }
   
