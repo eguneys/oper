@@ -1,6 +1,6 @@
 {
-  "name": "stedavon",
-  "version": "1.0.0",
+  "name": "oper",
+  "version": "1.2.0",
   "include": [
     "src/*.ts"
   ],
