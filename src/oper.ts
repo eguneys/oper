@@ -22,7 +22,6 @@ export default class Oper implements IMover {
 
   async move(position: string, moves: Array<string>, state: tot.PlayState) {
     let sim = await this.studies.get(state.opponent.id);
-    
     return sim.move(position, moves);
   }
 

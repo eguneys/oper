@@ -16,6 +16,7 @@ export default class MovePicker {
   }
 
   abort() {
+    console.log('aborted');
     this.lastMove = undefined;
     this.lastPick = undefined;
   }
