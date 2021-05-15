@@ -1,6 +1,6 @@
 {
   "name": "oper",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "include": [
     "src/*.ts"
   ],
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "apil": "^1.0.0",
-    "esrar": "^1.0.0",
+    "esrar": "^1.0.4",
     "movil": "^1.0.0",
     "pampu": "^1.0.0",
     "tobil": "^1.0.1",
