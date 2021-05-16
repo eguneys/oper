@@ -32,12 +32,21 @@ export default class StudyImport {
   }
 
   async maybeLoad(studyId: string) {
+    let chapterIdReg = /^https:\/\/lichess\.org\/study\/([A-Za-z0-9]{8})\/([A-Za-z0-9]{8})$/
     let studyIdReg = /^https:\/\/lichess\.org\/study\/([A-Za-z0-9]{8})$/;
-    let match = studyId.match(studyIdReg);
-    try {
+    let match = studyId.match(chapterIdReg);
+    let pgns;
+    if (match) {
+      pgns = await study.oneChapter(match[1], match[2]);
+    } else {
+      match = studyId.match(studyIdReg);
       if (match) {
-        let allChapters = await study.allChapters(match[1]);
-        let builder = esrar(allChapters);
+        pgns = await study.allChapters(match[1]);
+      }
+    }
+    try {
+      if (pgns) {
+        let builder = esrar(pgns);
         this.setPgns(builder);
         
         return [{
