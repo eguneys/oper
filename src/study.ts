@@ -3,7 +3,7 @@ import { tot } from 'tobil';
 import esrar, { erm, StudyBuilder } from 'esrar';
 import { study } from 'apil';
 import MovePicker from './picker';
-import { misc } from 'tschess';
+import { misc } from 'chesst';
 
 export default class StudyImport {
 
@@ -24,6 +24,7 @@ export default class StudyImport {
   move(position: string, moves: Array<string>) {
     let res;
     let fen = misc.fenAfterUcis(position, moves);
+    console.log(fen, moves);
     if (fen) {
       res = this.picker.pick(fen);
     }

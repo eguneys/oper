@@ -26,7 +26,7 @@ export default class MovePicker {
   }
 
   pickFromQMoves(moves: Array<erm.QMove>) {
-    return moves[0]
+    return moves[Math.floor(Math.random() * moves.length)];
   }
 
   pick(fen: string) {

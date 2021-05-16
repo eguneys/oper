@@ -21,10 +21,10 @@
   },
   "dependencies": {
     "apil": "^1.0.0",
+    "chesst": "^2.0.1",
     "esrar": "^1.0.4",
     "movil": "^1.0.0",
     "pampu": "^1.0.0",
-    "tobil": "^1.0.1",
-    "tschess": "^1.1.4"
+    "tobil": "^1.0.1"
   }
 }
